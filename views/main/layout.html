@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/public/index/base.css?v=20170404">
+	<link rel="stylesheet" href="/public/font/iconfont.css">
+	{% block style%}
+	{% endblock %}
+</head>
+<body>
+	<div class="header">
+		<div class="warp "></div>
+	</div>
+	<div class="dn pa t0 l0 w100p h100p menu_mask"></div>
+	<div class="nav tac pr">
+		<span id="navBtn" class="iconfont inco nav_menu dn fl ml10">&#xe603;</span>
+		<span id="navSearch" class="iconfont icon fr nav_search mr10 dn">&#xe600;</span>
+		<ul id="navMenu" class="maxnav">
+			{% if !type %}
+			<li class="_on"><a href="/">首页</a></li>
+			{% else %}
+			<li><a href="/">首页</a></li>
+			{% endif %}
+			{% for category in categories %}
+				{% if type == category._id %}
+				<li class="_on"><a href="/?type={{category._id.toString()}}">{{category.name}}</a></li>
+				{% else %}
+				<li><a href="/?type={{category._id.toString()}}">{{category.name}}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="main">
+		<div class="warp clearfix">
+			{% block left %}
+			{% endblock %}
+
+			{% block middle %}
+			{% endblock %}
+			
+			{% block right %}
+			{% endblock %}
+		</div>
+	</div>
+	<div class="footer">
+		<div class="copyright tac">
+			<p>copyright</p>
+		</div>
+	</div>
+</body>
+
+<script src="/public/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/public/js/common.js"></script>
+
+{% block footer%}
+{% endblock %}
+</html>
+
+
+
+

@@ -1,0 +1,205 @@
+{% extends 'layout.html' %}
+
+	{% block title %}{{content.title}}{% endblock %}
+
+	{% block style %}
+	<link rel="stylesheet" type="text/css" href="/public/index/content.css?v=20170404">
+	<link rel="stylesheet" href="/public/index/prettify.css">
+	<script src="/public/js/prettify.js"></script>
+	{% endblock %}
+
+	{% block middle %}	
+			<div class="content mauto mb20">
+				
+				<div class="atext pt10 ">
+					<h2>{{content.title}}</h2>
+					<p class="_tip clearfix">
+						<span class="_class">分类：{{content.category.name}}</span>
+						<span class="_read">阅读({{content.view}})</span>
+						<span class="_view">回复({{content.comment.length}})</span>
+						<span class="">{{content.time|date('Y-m-d', -8*60)}}</span>
+						<button class="btn fr btn-3" onclick="window.history.go(-1);">返回</button>
+					</p>
+					<div class="_content lh2" escape="false">{% autoescape %}{{content.content}}{% endautoescape %}</div>
+				</div>
+				<ul class="page_btn tac">
+					<li class="dib">
+						{% if prev.id %}
+						<a class="btn-4" href="/content?id={{prev.id.toString()}}&type={{prev.category.toString()}}">上一篇</a>
+						{% else %}
+						<a class="btn-4" style="cursor:default;" href="javascript:;">上一篇</a>
+						{% endif %}
+					</li>
+					<li class="dib">
+						{% if next.id %}
+						<a class="btn-4" href="/content?id={{next.id.toString()}}&type={{next.category.toString()}}">下一篇</a>
+						{% else %}
+						<a class="btn-4" style="cursor:default;" href="javascript:;">下一篇</a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+			<div class="comment mauto p20 mb20">
+				<h3 class="_h3 dib mb15">发表评论</h3>
+				<p class="_tip mb15">发表评论请输入昵称和邮箱，邮箱地址不会被公开，只作为回复的联系方式！</p>
+				<form id="cForm" class="c_form clearfix" action="/content/comment?id={{content._id.toString()}}">
+					<label for="username" class="db w50p fl">
+						<span>昵称：</span>
+						<div>
+							<input type="text" name="username" placeholder="请输入昵称">	
+						</div>
+					</label>
+					<label for="e_meil" class="db fr e_meil">
+						<span>邮箱：</span>
+						<div>
+							<input type="text" class="emeil" name="emeil" placeholder="请输入邮箱">
+						</div>	
+					</label>
+					<label for="c_text" class="fl w100p c_text">
+						<span>评论：</span>
+						<div>
+							<textarea name="comment" id="c_text" rows="3" placeholder="请输入评论内容"></textarea>
+						</div>
+					</label>
+					<label for="button" class="fl">
+						<div>
+							<button class="btn-1">提交</button>
+						</div>
+					</label>
+				</form>
+			</div>
+			<div id="cList" class="c_list mauto p20">
+				<h3 class="_h3 dib mb15">评论列表</h3>
+				<script type="text/template" id="tpl">
+					<% _.each(datas, function (item) { %>
+						<li>
+							<span class="_username dib mb10"><%= item.username %></span>
+							<p class="_content mb10"><%= item.content %></p>
+							<p class="clearfix">
+								<span class="_time fl"><%= item.posttime %></span>
+								<span class="_good fr"><a class="_reply" onClick="reply(this)" href="javascript:;">回复</a><a class="like_btn" href="javascript:;" postTime="<%= item.postTime %>">赞(<b><%= item.like %></b>)</a></span>
+							</p>	
+						</li>
+					<% }); %>
+				</script>
+				{% if content.comment.length >0 %}
+				<ul class="comment_li"></ul>
+				{% else %}
+				<p class="no_comment tac">还没有评论!</p>
+				{% endif %}
+				<p class="mt20 tac c_page dn">
+					<button class="btn-3">上一页</button>
+					<button class="btn-3">下一页</button>
+				</p>
+			</div>
+	{% endblock %}	
+
+{% block footer %}
+<script src="/public/js/underscore.js"></script>
+<script>
+
+		//代码高亮
+		$('.content pre').addClass('prettyprint');
+		prettyPrint();
+
+		//发表评论
+		var $cForm = $('#cForm');
+		$cForm.submit(function (e) {
+			var _this = $(this);
+			e.preventDefault();
+			var data = $(this).serializeArray();
+			var inputs = $(this).find('input, textarea');
+			var pass = true;
+			var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+			var isEmeil = reg.test(_this.find('.emeil').val());
+			inputs.each(function () {
+				if($.trim($(this).val()) == '') {
+					errorColor(inputs, this);
+					pass = false;
+					return false;
+				} else if (!isEmeil) {
+					alert(_this.find('.emeil').val());
+					errorColor(inputs, _this.find('.emeil'));
+					pass = false;
+					alert('请输入正确的邮箱');
+					return false;
+				}
+			});
+
+			function errorColor (opts, _this) {
+				opts.css('borderColor', '#ddd');
+				$(_this).css('borderColor', 'red');
+				opts.focus(function () {
+					$(this).css('borderColor', '#ff5e1e');
+				}).blur(function () {
+					$(this).css('borderColor', '#ddd');
+				});
+			};
+			
+			pass && $.ajax({
+				url : _this.attr('action'),
+				data : data,
+				type : 'post',
+				success : function (ret) {
+					alert(ret.message);
+					if (ret.code == 1) {
+						window.location.reload();
+					}
+				}
+			});
+		});
+
+		//回复评论
+		var reply = function (_this) {
+			var str = '回复 '+ $(_this).parents('li').find('._username').html() + ' : ';
+			$cForm.find('textarea').val(str);
+			$cForm.find('input').eq(0).focus();
+		};
+
+		//获取评论，点赞
+		var $url = $cForm.attr('action');
+		var datas;
+		var reload = function (datas) {
+			$('.comment_li').html(_.template($('#tpl').html(), datas));
+		};
+		$.ajax({
+			url : $url,
+			type : 'get',
+			success : function (ret) {
+				datas = ret.reverse(); //倒序
+				for (var i = datas.length - 1; i >= 0; i--) {
+					datas[i].posttime = new Date(datas[i].postTime).toLocaleString();
+				}
+				reload(datas);
+
+				//点赞
+				$('.like_btn').click(function () {
+					if(!this.onOff){
+						$(this).addClass('_on').find('b').html(Number($(this).find('b').html())+1);
+						this.onOff = true;
+						var data = {'postTime':$(this).attr('postTime').valueOf()};
+						$.ajax({
+							url : '/content/like?id={{content._id.toString()}}',
+							type : 'post',
+							data : data,
+							success : function (ret) {
+								if(ret.code) {
+									alert(ret.message);
+								}
+							}
+						});
+					}
+					
+				});
+			}
+		});
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,236 @@
+@import "index.css";
+/*content*/
+.content {
+  max-width: 820px;
+  background: #fff;
+  border-radius: 2px;
+  padding-bottom: 1px;
+}
+.content ._tip {
+  line-height: 32px;
+}
+.content ._back {
+  line-height: 26px;
+}
+.content ._view {
+  border-right: 1px dotted #999;
+}
+.content ._content {
+  padding: 2%;
+  margin-bottom: 20px;
+  text-indent: 0;
+}
+.content ._content h3 {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0;
+}
+.content ._content pre {
+  border: 1px solid #ddd;
+  background: #fff;
+  border-left: 2px solid #ff5e1e;
+  padding: 4px 8px;
+  border-radius: 2px;
+  text-indent: 0;
+  line-height: 1.5em;
+  overflow-x: scroll;
+}
+.content .page_btn {
+  padding: 0 38px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #ff5e1e;
+}
+.content .page_btn li {
+  margin: 0 6px;
+}
+.content .page_btn a {
+  color: #ff5e1e;
+  display: inline-block;
+  line-height: 30px;
+}
+.comment,
+.c_list {
+  max-width: 780px;
+  background: #fff;
+  border-radius: 2px;
+}
+.comment ._h3,
+.c_list ._h3 {
+  color: #666;
+  line-height: 20px;
+  border-bottom: 2px solid #ff5e1e;
+  font-size: 16px;
+  padding-bottom: 2px;
+}
+.comment ._tip,
+.c_list ._tip {
+  font-size: 12px;
+  color: #fff;
+  background: #ff5e1e;
+  border-radius: 3px;
+  line-height: 18px;
+  padding: 6px 4px;
+}
+.c_form label {
+  display: block;
+  margin-bottom: 15px;
+}
+.c_form label span {
+  float: left;
+  line-height: 30px;
+}
+.c_form label div {
+  margin-left: 3em;
+  margin-right: 1em;
+}
+.c_form label input,
+.c_form label textarea {
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  line-height: 28px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.c_form label input:focus,
+.c_form label textarea:focus {
+  border-color: #ff5e1e;
+}
+.c_form label textarea {
+  width: 100%;
+  padding: 6px 10px;
+}
+.c_form label:last-child {
+  margin-bottom: 0;
+}
+.c_form .e_meil {
+  width: 48%;
+}
+.c_form .e_meil div {
+  margin-right: 0;
+}
+.c_form .c_text div {
+  margin-right: 0;
+}
+.c_form .c_text span {
+  margin-top: 6px;
+}
+.no_comment {
+  background: #f1f1f1;
+  border-radius: 3px;
+  line-height: 2;
+  padding: 6px 2%;
+}
+.comment_li li {
+  padding: 14px 0;
+  border-bottom: 1px solid #ddd;
+}
+.comment_li li a:hover {
+  color: #ff5e1e;
+}
+.comment_li li:nth-of-type(1) {
+  padding-top: 0;
+}
+.comment_li ._username {
+  color: #ff5e1e;
+}
+.comment_li ._content {
+  background: #f1f1f1;
+  border-radius: 3px;
+  line-height: 2;
+  padding: 6px 2%;
+}
+.comment_li ._time,
+.comment_li ._good a {
+  font-size: 12px;
+  color: #777;
+}
+.comment_li ._good a {
+  padding: 0 6px;
+  line-height: 1;
+}
+.comment_li ._reply {
+  border-right: 1px solid #ddd;
+}
+.comment_li span ._on {
+  color: #ff5e1e;
+}
+.c_page button {
+  margin: 0 6px;
+}
+@media screen and (max-width: 770px) and (min-width: 0) {
+  .nav_search {
+    display: none;
+  }
+  .page_btn {
+    margin-bottom: 10px !important;
+  }
+  .content ._content {
+    margin-bottom: 10px;
+  }
+  .comment,
+  .c_list {
+    padding: 20px 3%;
+  }
+  .c_form {
+    min-width: 16em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 30em;
+  }
+  .c_form label {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    float: none;
+  }
+  .c_form label span {
+    float: left;
+    line-height: 30px;
+  }
+  .c_form label div {
+    margin-left: 3em;
+    margin-right: 0;
+  }
+  .c_form label input,
+  .c_form label textarea {
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    line-height: 28px;
+    display: block;
+    box-sizing: border-box;
+  }
+  .c_form label input:focus,
+  .c_form label textarea:focus {
+    border-color: #ff5e1e;
+  }
+  .c_form label textarea {
+    padding: 10px;
+    line-height: 1.2;
+  }
+  .c_form button {
+    float: right;
+    display: block;
+    width: 100%;
+  }
+  .c_form .e_meil {
+    width: auto;
+    width: 100%;
+  }
+  .c_form .e_meil div {
+    margin-right: 0;
+  }
+  .c_form .c_text div {
+    margin-right: 0;
+  }
+  .c_form .c_text span {
+    margin-top: 6px;
+  }
+}

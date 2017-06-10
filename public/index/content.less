@@ -1,0 +1,76 @@
+@import "index.css";
+/*content*/
+.content { max-width: 820px; background: #fff; border-radius: 2px; padding-bottom: 1px;
+	._tip { line-height: 32px; }
+	._back { line-height: 26px; }
+	._view { border-right: 1px dotted #999; }
+	._content { padding: 2%; margin-bottom: 20px; text-indent: 0; 
+		h3 { font-size: 14px; color: #666; margin: 10px 0; }
+		pre { border: 1px solid #ddd; background: #fff; border-left: 2px solid #ff5e1e; padding: 4px 8px; border-radius: 2px; text-indent: 0; line-height: 1.5em; overflow-x: scroll; }
+	}
+	.atext {  }
+	.page_btn { padding: 0 38px; margin-bottom: 20px; font-size: 12px; color: #ff5e1e;
+		li { margin: 0 6px; }
+	}
+	.page_btn a { color: #ff5e1e; display: inline-block; line-height: 30px; }
+}
+.comment, .c_list { max-width: 780px; background: #fff; border-radius: 2px;
+	._h3 {color: #666; line-height: 20px; border-bottom: 2px solid #ff5e1e; font-size: 16px; padding-bottom: 2px; }
+	._tip { font-size: 12px; color: #fff; background: #ff5e1e; border-radius: 3px; line-height: 18px; padding: 6px 4px; }
+}
+.c_form {
+	label { display: block; margin-bottom: 15px; 
+		span { float: left; line-height: 30px; }
+		div { margin-left: 3em; margin-right: 1em; }
+		input,textarea { border: 1px solid #ddd; padding: 0 10px; font-size: 14px; border-radius: 3px; line-height: 28px; display: block; width: 100%; box-sizing: border-box;
+			&:focus { border-color: #ff5e1e; }
+		}
+		textarea { width: 100%; padding: 6px 10px; }
+	}
+	label:last-child { margin-bottom: 0; }
+	.e_meil { width: 48%;
+		div { margin-right: 0; }
+	}
+	.c_text {
+		div { margin-right: 0; }
+		span { margin-top: 6px; }
+	}
+}
+.no_comment { background: #f1f1f1; border-radius: 3px; line-height: 2; padding: 6px 2%; }
+.comment_li {
+	li { padding: 14px 0; border-bottom: 1px solid #ddd; 
+		a:hover { color: #ff5e1e; }
+	}
+	li:nth-of-type(1) { padding-top: 0; }
+	._username { color: #ff5e1e; }
+	._content { background: #f1f1f1; border-radius: 3px; line-height: 2; padding: 6px 2%; }
+	._time, ._good a { font-size: 12px; color: #777; }
+	._good a { padding: 0 6px; line-height: 1; }
+	._reply { border-right: 1px solid #ddd; }
+	span ._on { color: #ff5e1e; }
+}
+.c_page button { margin: 0 6px; }
+@media screen and (max-width:770px) and ( min-width:0) { 
+	.nav_search {display: none; }
+	.page_btn { margin-bottom: 10px !important; }
+	.content ._content{ margin-bottom: 10px; }
+	.comment, .c_list { padding: 20px 3%; }
+	.c_form { min-width: 16em; margin-left: auto; margin-right: auto; width: 80%; max-width: 30em;
+		label { display: block; margin-bottom: 15px; width: 100%; text-align: center; float: none; 
+			span { float: left; line-height: 30px; }
+			div { margin-left: 3em; margin-right: 0; }
+			input,textarea { border: 1px solid #ddd; padding: 0 10px; font-size: 14px; border-radius: 3px; line-height: 28px; display: block; box-sizing: border-box;
+				&:focus { border-color: #ff5e1e; }
+			}
+			textarea { padding: 10px; line-height: 1.2; }
+		}
+		button { float: right; display: block; width: 100%; }
+		.e_meil { width: auto; width: 100%; 
+			div { margin-right: 0; }
+		}
+		.c_text {
+			div { margin-right: 0; }
+			span { margin-top: 6px; }
+		}
+	}
+}

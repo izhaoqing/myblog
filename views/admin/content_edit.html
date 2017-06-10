@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+	<style type="text/css">
+		.inline_form { width: 20em; display: inline-block; margin-right: 10px; }
+	</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<ol class="breadcrumb">
+  		<li><a href="#">后台管理</a></li>
+  		<li><a href="#">博文</a></li>
+  		<li><a href="#">发布博客</a></li>
+	</ol>
+	<form id="editForm" method='post'>
+	  <div class="form-group inline_form">
+	    <label for="exampleInputEmail1">标题</label>
+	    <input class="form-control" id="title" type="text" name="title" value="{{content.title}}">
+	  </div>
+	  <div class="form-group inline_form">
+	    <label for="category">分类</label>
+	    <select class="form-control" name="category">
+	    	{% for category in category %}
+	    		{% if category._id.toString() == content.category %}
+		    		<option selected value="{{category.id}}">{{category.name}}</option>
+	    		{% else %}
+		    		<option value="{{category.id}}">{{category.name}}</option>
+	    		{% endif %}
+	    	{% endfor %}
+	    </select>
+	  </div>
+	  <div class="form-group">
+	    <label for="discription">描述</label>
+	    <textarea name="discription" class="form-control" rows="5">{{content.discription}}</textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="content">内容</label>
+	    <script id="editor" name="content" type="text/plain">
+	    </script>
+	  </div>
+	  <button id="subBtn" type="button" class="btn btn-default">确认</button>
+	</form>
+	<input type="text" class="dn" id="textBox" data="{{content.content}}">
+</div>
+	
+{% endblock %}
+
+{% block footer %}
+	<!-- 配置文件 -->
+    <script type="text/javascript" src="/public/UEditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/public/UEditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor');
+        ue.ready(function() {
+		    //设置编辑器的内容
+		    var str = $('#textBox').attr('data');
+			ue.setContent(str);
+		});
+    </script>
+
+	<script type="text/javascript">
+		$('#subBtn').click(function (e) {
+			e.preventDefault();
+			var onOff = true;
+			var data = $('#editForm').serializeArray();
+			for (var i = data.length - 1; i >= 0; i--) {
+				if (data[i].value == '') {
+					alert(data[i].name + '不能为空');
+					onOff = false;
+				} 
+			};
+			onOff && $('#editForm').submit();
+		});
+	</script>
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,86 @@
+@import "header.css";
+@import "footer.css";
+
+.main { width: 100%; padding: 20px 0 40px; }
+.column-left, .column-middle, .column-right { margin: 0 5px; border-radius: 2px; background: #fff;}
+.column-right, .column-left { background: #f6f6f6; }
+.column-left { width: 18%; margin-left: 10px; }
+.column-middle { width: 60%; height: auto; }
+.column-right { width: 18%; margin-right:10px; }
+
+.atext { margin: 0 10px 10px; }
+.atext li { border-bottom: 1px dashed #ddd; padding: 14px 0 32px;}
+.atext li:last-child { border: none; padding-bottom: 22px; }
+.atext ._tip { padding: 8px 0; font-size: 12px; }
+.atext ._tip span { padding: 0 7px 0 2px;}
+.atext ._tip ._class { padding-left: 0 ;}
+.atext ._class, .atext ._read { border-right: 1px dotted #999; }
+.atext h2 { font-size: 16px; line-height: 1.8; padding: 12px 0 4px; text-align: center;}
+.atext ._content { padding: 6px; border-radius: 3px; color:#333; background: #f3f3f3; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; text-indent: 2em; }
+.pagelist { margin: 22px; }
+.pagelist li { display: inline-block;  margin:0 5px;}
+.pagelist a { display:inline-block; width: 30px; height: 30px; color: #ff5e1e; border:1px solid #ff5e1e; background: #fff; border-radius: 2px; text-align: center; line-height: 30px; display: inline-block; }
+.pagelist ._on { background: #ff5e1e; color: #fff; }
+.pagelist ._next { padding:0 4px; width: auto; }
+
+/*右/左*/
+.search, .login, .r-side, .userinfo { width: 100%; background: #fff; border-radius: 2px; margin-bottom: 10px; }
+.search { box-sizing: border-box; padding: 10px 4px;}
+.search label { width: 100%; }
+.search ._text { width: 100%; box-sizing: border-box; border: 1px solid #ddd; height: 30px; border-radius: 2px; text-indent: 4px;}
+.search ._btn { border:none; background: #fff; line-height: 28px; color: #ddd; top:1px; right: 4px; font-size: 20px; cursor: pointer;}
+
+.login { box-sizing: border-box; padding: 10px 4px; }
+.login ._title, .search ._title, .r-side ._title, .column-left ._title,  .userinfo ._title { color: #333; line-height: 20px; border-bottom: 2px solid #ff5e1e; margin-bottom: 10px; }
+.login input { width: 100%; box-sizing: border-box; border:1px solid #ddd; margin-bottom: 10px; height: 30px; border-radius: 2px; text-indent: 4px; }
+.login ._reg, .login ._login { font-size: 14px; color: #ff5e1e; line-height: 32px; margin-right: 10px; }
+.login ._btn_reg { display: none; }
+.login i { font-size: 14px; }
+.userinfo ._username { color: #ff5e1e; }
+.userinfo ._exit:hover { color: #ff5e1e; }
+.userinfo ._exit i { font-size: 13px; }
+.r-side ._warp, .column-left ._warp, .userinfo ._warp { padding: 10px 0 8px; margin: 0 4px; background: #fff;}
+.r-side li { font-size: 12px; padding: 4px 0;  }
+.r-side li a { color: #757575; line-height: 14px;}
+.r-side li a:hover { color:#ff5e1e; }
+.column-left ._warp { margin-left: 0; margin-right: 0; padding-left: 4px; padding-right: 4px; }
+.column-left ._website { font-size: 12px; }
+.column-left ._contact { padding: 8px 0 6px; margin: 2px 0; background: #fff; }
+.column-left ._contact a { margin: 0 10px; font-size: 24px; line-height: 24px; }
+.column-left ._contact a:hover { color: #ff5e1e; }
+.column-left ._wechat { background: #fff; border-radius: 2px; height: 100px;}
+
+@media screen and (max-width:1020px) and (min-width:770px) {
+	.column-left { display: none; }
+	.column-middle { width: 73%; margin-right: 10px; }
+	.column-right { width: 23%; }
+}
+
+@media screen and (max-width:770px) and ( min-width:0) {
+	.header { display: none; }
+	.column-left { display: none; }
+	.column-middle { width: 100%; margin:0 auto; }
+	.column-right form { display: none; }
+	.column-right .r-side { display: none; }
+	.column-right .search { position: absolute; top: 42px; left: 0; z-index: 4; }
+	.column-right .search ._title { display: none; }
+	.column-right ._search { width: 80%; margin: 0 auto; display: block; max-width: 400px; }
+	input, button,a { -webkit-appearance: none; }
+	.main { padding: 0; }
+	.menu_mask { background: #000; opacity: 0.8; z-index: 3; top: 42px;}
+	.nav_menu, .nav_search { display: inline-block; line-height: 40px; cursor: pointer; color: #ff5e1e; font-size: 20px;}
+	.atext li { padding: 6px 0 32px; }
+	.nav .maxnav { display: none; }
+	.nav li { display: block; border: none; text-align: center; }
+	.pagelist .li { display: none; }
+	.pagelist ._next { display: block; color:#fff; background: #ff5e1e; }
+	.nav .show { display: block; position: absolute; top: 42px; background: #fff; width: 100%; z-index: 4; }
+	.nav ._on a { color: #ff5e1e; }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+	<style type="text/css">
+		.inline_form { width: 20em; display: inline-block; margin-right: 10px; }
+	</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<ol class="breadcrumb">
+  		<li><a href="#">后台管理</a></li>
+  		<li><a href="#">博文</a></li>
+  		<li><a href="#">发布博客</a></li>
+	</ol>
+	<form id="cForm" action="/admin/content" method='post'>
+	  <div class="form-group inline_form">
+	    <label for="exampleInputEmail1">标题</label>
+	    <input type="text" name="title" class="form-control" id="title" placeholder="请输入标题">
+	  </div>
+	  <div class="form-group inline_form">
+	    <label for="category">分类</label>
+	    <select class="form-control" name="category">
+	    	{% for category in categories %}
+	    		<option value="{{category.id}}">{{category.name}}</option>
+	    	{% endfor %}
+	    </select>
+	  </div>
+	  <div class="form-group">
+	    <label for="discription">描述</label>
+	    <textarea name="discription" class="form-control" rows="5"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="content">内容</label>
+	    <!-- <textarea name="content" class="form-control" rows="10"></textarea> -->
+	    <!-- 加载编辑器的容器 -->
+	    <script id="editor" name="content" type="text/plain">
+	    </script>
+	  </div>
+	  <button type="submit" class="btn btn-default submit_btn">发布</button>
+	</form>
+</div>
+	
+{% endblock %}
+
+{% block footer %}
+	<!-- 配置文件 -->
+    <script type="text/javascript" src="/public/UEditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/public/UEditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor');
+        $('.submit_btn').click(function (e) {
+        	e.preventDefault();
+			var onOff = true;
+			var data = $('#cForm').serializeArray();
+			if(data.length < 4){
+				alert('输入不能为空');
+				return false;
+			}
+			for (var i = data.length - 1; i >= 0; i--) {
+				if (data[i].value == '') {
+					alert(data[i].name + '不能为空');
+					return false;
+					onOff = false;
+				} 
+			};
+			onOff && $('#cForm').submit();
+        });
+    </script>
+{% endblock %}
+
+
+
+

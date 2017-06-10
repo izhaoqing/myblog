@@ -1,0 +1,12 @@
+@import "../index/base.css";
+
+/*登录*/
+body { background: #fff; }
+.admin_login { margin: 160px auto; width: 322px; border: 1px solid #ddd; border-radius: 2px; box-shadow: 0 0 10px 0 #ddd; padding: 26px 46px 32px; color: #333;}
+.admin_login label { margin-bottom: 14px; display: block; font-weight: 400; }
+.admin_login p { margin: 4px 0 20px; font-size: 18px; color: #666; text-align: center; }
+.admin_login input:focus { border-color: #ff5e1e; }
+.admin_login input, .admin_login button { border: 1px solid #aaa; width: 100%; border-radius: 2px; line-height: 30px; padding: 0 6px; }
+.admin_login button { background: #ff5e1e; color: #fff; border:0; outline: none; font-size: 16px; line-height: 32px; }
+
+body { padding-bottom: 60px; }

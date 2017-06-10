@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理</title>
+	<link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/public/admin/admin.css">
+	{% block style %}
+	{% endblock %}
+	<script src="/public/js/jquery-3.1.1.js"></script>
+</head>
+<body>
+	{% if username %}
+	<nav class="navbar navbar-default">
+	  	<div class="container">
+	    	<!-- Brand and toggle get grouped for better mobile display -->
+	    	<div class="navbar-header">
+	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+	      		</button>
+	      		<a class="navbar-brand" href="/admin">后台管理</a>
+	    	</div>
+
+	    	<!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav">
+		      		<li class="dropdown">
+		          		<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">博文<span class="caret"></span></a>
+			          	<ul class="dropdown-menu">
+				            <li><a href="/admin/content">发布博客</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="/admin/category">分类管理</a></li>
+				            <li role="separator" class="divider"></li>
+		          		</ul>
+		        	</li>
+		        	<li class="active1"><a href="javascript:;">Link<span class="sr-only">(current)</span></a></li>
+		        	<li><a href="http://localhost:8080/admin/users">账户</a></li>
+		       		
+		      	</ul>
+		      	<ul class="nav navbar-nav navbar-right">
+		        	<li id="logoutBtn"><a href="javascript:;">退出</a></li>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+	  	</div><!-- /.container-fluid -->
+	</nav>
+	
+	{% block content %}	
+	{% endblock %}
+
+	{% else %}
+
+	<form action="/admin/login" id="formLogin" class="admin_login">
+		<p>管理员登录</p>
+		<label for="">
+			<input type="text" name="username" placeholder="账户"><br>
+		</label>
+		<label for="">
+			<input type="password" name="password" placeholder="密码"><br>
+		</label>
+		<button id="submitBtn" type="submit" class="login tac db">登录</button>
+	</form>
+	
+	{% endif %}
+</body>
+
+	<script src="/public/bootstrap/js/bootstrap.min.js"></script>
+
+	<script>
+		$('#logoutBtn').click(function () {
+			$.ajax({
+				url : '/admin/logout',
+				type : 'post',
+				success : function (res) {
+					if(res.code == '0') {
+						window.location.reload();
+					}
+				}
+			});
+		});
+	</script>
+
+{% block footer %}
+{% endblock %}
+</html>
+
+
+
+
+
+

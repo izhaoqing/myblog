@@ -1,0 +1,126 @@
+{% extends 'layout.html' %}
+
+	{% block title %}首页{% endblock %}
+
+	{% block style %}
+	<link rel="stylesheet" href="/public/index/index.css">
+	{% endblock %}
+	
+	{% block left %}
+		<div class="column-left fl">
+			<div class="_warp">
+				<span class="_title dib">博客介绍</span>
+				<p class="_website">本网站是zhaoqing个人博客，主要发布前端方面的学习记录和基础知识总结，以及其他生活记录。</p>
+				
+			</div>
+			<div class="_contact tac">
+				<a class="_weibo icon iconfont" target="_blank" href="http://weibo.com/u/1804808885">&#xe604;</a>
+				<a id="weChat" class="icon iconfont" target="_blank" href="javascript:;">&#xe605;</a>
+				<a class="_163 icon iconfont" target="_blank" href="mailto:zhaoq0104@163.com">&#xe659;</a>
+			</div>
+			<div id="weChatImg" class="_wechat tac p10 dn">
+				<img src="/public/img/wechat.png" alt="微信二维码" width="100" height="100">
+			</div>
+		</div>
+	{% endblock %}
+
+	{% block middle %}
+		<div class="column-middle fl">
+			<ul class="atext">
+				{% for content in contents %}
+				<li>
+					<h2>{{content.title}}</h2>
+					<p class="_tip clearfix">
+						<span class="_class">分类：{{content.category.name}}</span>
+						<span class="_read">阅读({{content.view}})</span>
+						<span>回复({{content.comment.length}})</span>
+						<span class="fr">{{content.time|date('Y-m-d H:i:s', -8*60)}}</span>
+					</p>
+					<p class="_content lh2 taj">{{content.discription}}</p>
+					<a class="btn-1" href="/content?id={{content._id.toString()}}&type={{content.category.id}}">阅读全文</a>
+				</li>
+				{% endfor %}
+
+				{% if contents.length == 0 %}
+					{% if searchLength == 0 %}
+					<p class="tac m20 p20">当前搜索无内容</p>
+					{% else %}
+					<p class="tac m20 p20">当前分类无内容</p>
+					{% endif %}
+				{% endif %}
+
+			</ul>
+			{% if pages >1 %}
+			<ul class="pagelist tac">
+				{% if page <= 1 %}
+				<li><a class=" _next" href="javascript:;">上一页</a></li>
+				{% else %}
+				<li><a class=" _next" href="/?type={{category._id.toString()}}&page={{page-1}}">上一页</a></li>
+				{% endif %}
+				{% for pagination in paginations %}
+					{% if pagination == page %}
+					<li class="li"><a class="_on" href="/?type={{category._id.toString()}}&page={{pagination}}">{{pagination}}</a></li>
+					{% else %}
+					<li class="li"><a class="" href="/?type={{category._id.toString()}}&page={{pagination}}">{{pagination}}</a></li>
+					{% endif %}
+				{% endfor %}
+				{% if page >= pages %}
+				<li><a class="_next" href="javascript:;">下一页</a></li>
+				{% else %}
+				<li><a class="_next" href="/?type={{category._id.toString()}}&page={{page+1}}">下一页</a></li>
+				{% endif %}
+			</ul>
+			{% endif %}
+		</div>
+	{% endblock %}
+
+	{% block right %}
+		<div class="column-right fl">
+			<form class="search" id="search">
+				<label><span class="_title dib">文章搜索</span></label>
+				<label class="dib pr _search">
+					<input class="_text" name="search" type="text">
+					<input class="_btn icon iconfont pa p0" type="submit" value="&#xe600;">
+				</label>
+			</form>
+			{% if userInfo._id %}
+			<div id="userInfo" class="userinfo w100p">
+				<div class="_warp clearfix">
+					<p><span  class="_title dib">用户信息</span></p>
+					<span class="_username fl">你好，{{ userInfo.username }}</span>
+					<a id="logout" class="_exit fr" href="javascript:;">退出<i class="icon iconfont">&#xe6de;</i></a>
+				</div>
+			</div>
+			{% else %}
+			<form id="login" class="login w100p clearfix" action="/api/user/login" >
+				<label><span class="_title dib">登录/注册</span></label>
+				<input type="text" placeholder="用户名" name="username">
+				<input type="password" placeholder="密码" name="password">
+				<input class="repassword dn" type="password" placeholder="重复密码">
+				<button id="loginBtn" class="btn-1 _btn_login fl" type="submit">登录</button>
+				<a class="_reg fr dib" href="javascript:;">注册<i class="icon iconfont">&#xe6de;</i></a>
+				<a class="_login fr dib dn" href="javascript:;">登录<i class="icon iconfont">&#xe6de;</i></a>
+				<button id="regBtn" class="btn-1 _btn_reg fl dn" type="submit">注册</button>
+			</form>
+			{% endif %}
+			<div class="r-side">
+				<div class="_warp"">
+					<span class="_title dib">文章推荐</span>
+					<ul class="">
+						{% for recom in recoms %}
+						<li><a href="/content?id={{recom._id.toString()}}&type={{recom.category.toString()}}">{{recom.title}}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+{% block footer %}
+	<script src="/public/js/index.js"></script>
+{% endblock %}
+
+
+
+
+
