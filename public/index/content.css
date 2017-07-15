@@ -35,6 +35,9 @@
   line-height: 1.5em;
   overflow-x: scroll;
 }
+.content .atext a {
+  color: #ff5e1e;
+}
 .content .page_btn {
   padding: 0 38px;
   margin-bottom: 20px;
