@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flex弹性盒模型Demo</title>
+	<style>
+		p { margin-top: 10px;}
+		.box { border: 1px solid #ccc; border-radius: 3px; margin: 20px 0 40px; padding: 10px;
+			display: flex;
+		 }
+		.wrap1 { flex-direction: row; } 
+		.wrap2 { flex-direction: row-reverse; } 
+		.wrap3 { flex-direction: column; } 
+		.wrap4 { flex-direction: column-reverse; }
+		.item { width: 200px; height: 100px; background: #ddd; border-radius: 3px; margin: 10px; text-align: center; color: #666; line-height: 100px;}
+
+		.f-wrap1 { flex-wrap: nowrap; }
+		.f-wrap2 { flex-wrap: wrap; }
+		.f-wrap3 { flex-wrap: wrap-reverse; }
+		.f-wrap1, .f-wrap2, .f-wrap3 { width: 700px; }
+
+		.content1 { justify-content: flex-start; }
+		.content2 { justify-content: flex-end; }
+		.content3 { justify-content: center; }
+		.content4 { justify-content: space-between; }
+		.content5 { justify-content: space-around; }
+		.box .item1 { width: 100px; }
+		.box .item2 { width: 200px; }
+		.box .item3 { width: 300px; }
+
+		.a-box1, .a-box2, .a-box3, .a-box4, .a-box5{ height: 400px; width: 660px;}
+		.a-box1 { align-items: flex-start; }
+		.a-box2 { align-items: flex-end; }
+		.a-box3 { align-items: center; }
+		.a-box4 { align-items: baseline; position: relative;}
+		.a-box4:before { content:''; display: block; width: 100%; height: 1px; background: #999; position: absolute; top: 130px; left: 0; }
+		.a-box5 { align-items: stretch; }
+		.a-box5 .item { height: auto; }
+		.align-i1 { height: 100px; line-height: 140px;}
+		.align-i2 { height: 300px; }
+		.align-i3 { height: 200px; line-height: 200px;}
+
+		.a-content6 .item { height: auto; }
+
+		.order span { position: relative; top: -30px; left: -50px; font-size: 14px; }
+
+		.grow .item { width: auto; position: relative; }
+		.grow span { width: auto; position: absolute; top: 10px; left: 10px; font-size: 14px; line-height: 1; }
+
+		.pr { position: relative; }
+		.pa { position: absolute; }
+		.shrink span, .self span { top: 10px; left: 10px; font-size: 14px; line-height: 1; }
+
+		.self .item { width: 200px; height: 300px; line-height: 300px;}
+	</style>
+</head>
+<body>
+	<div style="width: 1000px; margin: 0 auto;">
+		<h2>1 flex-direction 排列方向</h1>
+		<p>flex-direction: row</p>
+		<div class="wrap1 box">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+		</div>
+
+		<p>flex-direction: row-reverse</p>
+		<div class="wrap2 box">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+		</div>
+
+		<p>flex-direction: column</p>
+		<div class="wrap3 box">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+		</div>
+
+		<p>flex-direction: column-reverse</p>
+		<div class="wrap4 box">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+		</div>
+
+		<h2>2 flex-wrap 换行方式</h1>
+		<p>flex-wrap: nowrap</p>
+		<div class="box f-wrap1">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+		</div>
+
+		<p>flex-wrap: wrap</p>
+		<div class="box f-wrap2">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+		</div>
+
+		<p>flex-wrap: wrap-reverse</p>
+		<div class="box f-wrap3">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+		</div>
+		
+		<h2>3 justify-content 元素水平对齐方式</h1>
+		<p>justify-content: flex-start</p>
+		<div class="content1 box box1">
+			<div class="item1 item">1</div>
+			<div class="item2 item">2</div>
+			<div class="item3 item">3</div>
+		</div>
+		<p>justify-content: flex-end</p>
+		<div class="content2 box box1">
+			<div class="item1 item">1</div>
+			<div class="item2 item">2</div>
+			<div class="item3 item">3</div>
+		</div>
+		<p>justify-content: center</p>
+		<div class="content3 box box1">
+			<div class="item1 item">1</div>
+			<div class="item2 item">2</div>
+			<div class="item3 item">3</div>
+		</div>
+		<p>justify-content: space-between</p>
+		<div class="content4 box box1">
+			<div class="item1 item">1</div>
+			<div class="item2 item">2</div>
+			<div class="item3 item">3</div>
+		</div>
+		<p>justify-content: space-around</p>
+		<div class="content5 box box1">
+			<div class="item1 item">1</div>
+			<div class="item2 item">2</div>
+			<div class="item3 item">3</div>
+		</div>
+
+		<h2>4 align-items 元素水平对齐方式</h1>
+		<p>align-items: flex-start</p>
+		<div class="a-box1 box box1">
+			<div class="align-i1 item">1</div>
+			<div class="align-i2 item">2</div>
+			<div class="align-i3 item">3</div>
+		</div>
+		<p>align-items: flex-end</p>
+		<div class="a-box2 box box1">
+			<div class="align-i1 item">1</div>
+			<div class="align-i2 item">2</div>
+			<div class="align-i3 item">3</div>
+		</div>
+		<p>align-items: center</p>
+		<div class="a-box3 box box1">
+			<div class="align-i1 item">1</div>
+			<div class="align-i2 item">2</div>
+			<div class="align-i3 item">3</div>
+		</div>
+		<p>align-items: baseline</p>
+		<div class="a-box4 box box1">
+			<div class="align-i1 item">1</div>
+			<div class="align-i2 item">2</div>
+			<div class="align-i3 item">3</div>
+		</div>
+		<p>align-items: stretch</p>
+		<div class="a-box5 box box1">
+			<div class="align-i1 item">1</div>
+			<div class="align-i2 item">2</div>
+			<div class="align-i3 item">3</div>
+		</div>
+
+		<h2>5 align-content </h1>
+		<p>align-content: flex-start</p>
+		<div class="a-content1 box" style="flex-direction: row; flex-wrap: wrap; align-content: flex-start; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+		<p>align-content: flex-end</p>
+		<div class="a-content1 box" style="flex-direction: row; flex-wrap: wrap; align-content: flex-end; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+		<p>align-content: center</p>
+		<div class="a-content1 box" style="flex-direction: row; flex-wrap: wrap; align-content: center; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+		<p>align-content: space-around</p>
+		<div class="a-content1 box" style="flex-direction: row; flex-wrap: wrap; align-content: space-around; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+		<p>align-content: space-between</p>
+		<div class="a-content1 box" style="flex-direction: row; flex-wrap: wrap; align-content: space-between; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+		<p>align-content: stretch</p>
+		<div class="a-content6 box" style="flex-direction: row; flex-wrap: wrap; align-content: stretch; height: 400px;">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+		</div>
+
+		<h2>6 order</h2>
+		<p>order: [ num ]</p>
+		<div class="box order">
+			<div class="item" style="order: 2;">
+			<span>order: 2</span>
+			1
+			</div>
+			<div class="item" style="order: 1;">
+			<span>order: 1</span>
+			2</div>
+			<div class="item" style="order: 3">
+			<span>order: 3</span>
+			3</div>
+			<div class="item" style="order: 0">
+			<span>order: 0</span>
+			4</div>
+		</div>
+
+		<h2>7 flex-grow</h2>
+		<p>flex-grow: [ num ]</p>
+		<div class="box grow">
+			<div class="item" style="flex-grow: 2;">
+			<span>flex-grow: 2</span>
+			1
+			</div>
+			<div class="item" style="flex-grow: 1">
+			<span>flex-grow: 1</span>
+			2</div>
+			<div class="item" style="flex-grow: 2">
+			<span>flex-grow: 2</span>
+			3</div>
+			<div class="item" style="flex-grow: 3">
+			<span>flex-grow: 3</span>
+			4</div>
+		</div>
+
+		<h2>8 flex-shrink</h2>
+		<p>flex-shrink: [ num ]</p>
+		<div class="box shrink" style="width: 600px;">
+			<div class="item pr" style="flex-shrink: 1;">
+			<span class="pa">flex-shrink: 1</span>
+			1
+			</div>
+			<div class="item pr" style="flex-shrink: 0">
+			<span class="pa">flex-shrink: 0</span>
+			2</div>
+			<div class="item pr" style="flex-shrink: 0">
+			<span class="pa">flex-shrink: 0</span>
+			3</div>
+		</div>
+
+		<h2>8 align-self</h2>
+		<p>align-self: center</p>
+		<div class="box self pr" style="height: 400px;">
+			<span class="pa" style="top: 14px; right: 10px; color: #444; text-align: right; font-size: 20px; ">align-items: flex-start</span>
+			<div class="item pr" style="">
+			1
+			</div>
+			<div class="item pr" style="align-self: center;">
+			<span class="pa">align-self: flex-center</span>
+			2</div>
+			<div class="item pr" style="">
+			3</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

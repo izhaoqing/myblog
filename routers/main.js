@@ -114,6 +114,15 @@ router.get('/', function (req, res, next) {
 
 });
 
+//demo页面
+router.get('/demo', function (req, res) {
+	var pageName = req.query.name;
+	var page = 'demopage/' + pageName;
+	res.render( page, {
+		userInfo : req.userInfo,
+	});
+});
+
 router.get('/content', function (req, res) {
 	var id = req.query.id;
 	var type = req.query.type;
