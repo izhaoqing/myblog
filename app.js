@@ -48,7 +48,7 @@ mongoose.connect('mongodb://localhost:27017/blog', function (err) {
 		console.log('connection failed');
 	} else {
 		console.log('connection succed');
-		app.listen('8080');
+		app.listen('8088');
 	}
 });
 
