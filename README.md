@@ -18,42 +18,45 @@
 
 7. 启动成功，在浏览器中访问 `localhost:8088`
 
+8. 进入`public`目录，输入`npm install`安装`less`等依赖，输入`gulp watch`监听`less`和`js`文件的改动。
+
 >  其中`/Users/zhaoqing/Desktop` 为项目存放路径。连接成功后会打印 `connection accepted`。
 
 
 ## 界面
 
+### 博客首页
 
 <img src='README_img/1.png' width='' style="border:1px solid #ddd;"/>
 
-<p style="text-align:center; color: #aaa;">博客首页</p><br>
 
+
+### 博客详情  
 使用prettify实现代码高亮。
 
 <img src='README_img/2.png' width='' style="border:1px solid #ddd;"/>
 
-<p style="text-align:center; color: #aaa;">博客详情</p><br>
+### 评论
 
 <img src='README_img/3.png' width='' style="border:1px solid #ddd;"/>
 
-<p style="text-align:center; color: #aaa;">评论</p><br>
+### 后台管理
 
 在首页点击`后台管理` 或访问 `localhost:8088/admin`可进入后台管理登录页面，输入用户名`zq`，密码`123`点击登录 (用户名和密码在代码中写死）样式布局使用`bootstrap`。
 
 <img src='README_img/4.png' width='' style="border:1px solid #ddd;"/>
 
-<p style="text-align:center; color: #aaa;">文章列表</p><br>
 
 博客内容编辑使用百度ueditor富文本编辑器。
 
-<img src='README_img/5.png' width='' style="border:1px solid #ddd;"/>
+<img src='README_img/5.png' width='' />
 
-<p style="text-align:center; color: #aaa;">发布博客</p><br>
+
 
 首页博客分类可增删改。
 
-<img src='README_img/6.png' width='' style="border:1px solid #ddd;"/>
+<img src='README_img/6.png' width='' />
 
-<p style="text-align:center; color: #aaa;">博客分类</p><br>
+
 
 
