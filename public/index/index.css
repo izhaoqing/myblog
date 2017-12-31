@@ -37,8 +37,8 @@
 .login ._btn_reg { display: none; }
 .login i { font-size: 14px; }
 .userinfo ._username { color: #ff5e1e; }
-.userinfo ._exit:hover { color: #ff5e1e; }
-.userinfo ._exit i { font-size: 13px; }
+.userinfo ._exit:hover, .userinfo ._admin:hover { color: #ff5e1e; }
+.userinfo ._exit i, .userinfo ._exit i { font-size: 13px; }
 .r-side ._warp, .column-left ._warp, .userinfo ._warp { padding: 10px 0 8px; margin: 0 4px; background: #fff;}
 .r-side li { font-size: 12px; padding: 4px 0;  }
 .r-side li a { color: #757575; line-height: 14px;}

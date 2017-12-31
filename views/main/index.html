@@ -88,17 +88,19 @@
 				<div class="_warp clearfix">
 					<p><span  class="_title dib">用户信息</span></p>
 					<span class="_username fl">你好，{{ userInfo.username }}</span>
-					<a id="logout" class="_exit fr" href="javascript:;">退出<i class="icon iconfont">&#xe6de;</i></a>
+					<!-- <a id="logout" class="_exit fr" href="javascript:;">退出<i class="icon iconfont">&#xe6de;</i></a> -->
+					<a class="_admin fr" href="/admin">后台管理<i class="icon iconfont">&#xe6de;</i></a>
 				</div>
 			</div>
 			{% else %}
 			<form id="login" class="login w100p clearfix" action="/api/user/login" >
-				<label><span class="_title dib">登录/注册</span></label>
+				<!-- <label><span class="_title dib">登录/注册</span></label> -->
+				<label><span class="_title dib">登录</span></label>
 				<input type="text" placeholder="用户名" name="username">
 				<input type="password" placeholder="密码" name="password">
-				<input class="repassword dn" type="password" placeholder="重复密码">
+				<!-- <input class="repassword dn" type="password" placeholder="重复密码"> -->
 				<button id="loginBtn" class="btn-1 _btn_login fl" type="submit">登录</button>
-				<a class="_reg fr dib" href="javascript:;">注册<i class="icon iconfont">&#xe6de;</i></a>
+				<!-- <a class="_reg fr dib" href="javascript:;">注册<i class="icon iconfont">&#xe6de;</i></a> -->
 				<a class="_login fr dib dn" href="javascript:;">登录<i class="icon iconfont">&#xe6de;</i></a>
 				<button id="regBtn" class="btn-1 _btn_reg fl dn" type="submit">注册</button>
 			</form>
