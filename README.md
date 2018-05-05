@@ -29,8 +29,6 @@
 
 <img src='README_img/1.png' width='' style="border:1px solid #ddd;"/>
 
-
-
 ### 博客详情  
 使用prettify实现代码高亮。
 
@@ -42,15 +40,14 @@
 
 ### 后台管理
 
-在首页点击`后台管理` 或访问 `localhost:8088/admin`可进入后台管理登录页面，输入用户名`zq`，密码`123`点击登录 (用户名和密码在代码中写死）样式布局使用`bootstrap`。
+在首页点击`后台管理` 或访问 `localhost:8088/admin`可进入后台管理登录页面，样式布局使用`bootstrap`。
 
 <img src='README_img/4.png' width='' style="border:1px solid #ddd;"/>
 
 
-博客内容编辑使用百度ueditor富文本编辑器。
+博客内容编辑使用markdown语法，可编辑和预览，markdown转html使用[HyperDown.js](https://github.com/SegmentFault/HyperDown.js)。
 
 <img src='README_img/5.png' width='' />
-
 
 
 首页博客分类可增删改。
