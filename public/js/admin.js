@@ -1,6 +1,6 @@
 
 $(function () {
-
+	//登录表单
 	var $form = $('#formLogin');
 	$('#submitBtn').click(function (event) {
 		event.preventDefault();
@@ -19,6 +19,18 @@ $(function () {
 		return false;
 	});
 
-	
+	//退出登录
+	$('#logoutBtn').click(function () {
+		$.ajax({
+			url : '/admin/logout',
+			type : 'post',
+			success : function (res) {
+				if(res.code == '0') {
+					window.location.reload();
+				}
+			}
+		});
+	});
+
 
 });

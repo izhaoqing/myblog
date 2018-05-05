@@ -4,6 +4,7 @@
 	<style type="text/css">
 		.inline_form { width: 20em; display: inline-block; margin-right: 10px; }
 	</style>
+	<link rel="stylesheet" href="/public/index/prettify.css">
 {% endblock %}
 
 {% block content %}
@@ -32,25 +33,45 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="content">内容</label>
-	    <!-- <textarea name="content" class="form-control" rows="10"></textarea> -->
-	    <!-- 加载编辑器的容器 -->
-	    <script id="editor" name="content" type="text/plain">
-	    </script>
+	    <textarea id='blogContent' name="content" class="form-control content-textarea" rows="30"></textarea>
+	    <div class='preview dn'></div>
 	  </div>
-	  <button type="submit" class="btn btn-default submit_btn">发布</button>
+	  <button type="submit" class="btn btn-primary submit_btn">发布</button>
+	  <button type='button' class="btn btn-default js-preview-btn">预览</button>
+	  <button type='button' class="btn btn-default js-edit-btn dn">编辑</button>
 	</form>
 </div>
 	
 {% endblock %}
 
 {% block footer %}
-	<!-- 配置文件 -->
-    <script type="text/javascript" src="/public/UEditor/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/public/UEditor/ueditor.all.js"></script>
-    <!-- 实例化编辑器 -->
+    <script src='../../public/js/parser.js'></script>
+	<script src="../../public/js/prettify.js"></script>
+
     <script type="text/javascript">
-        var ue = UE.getEditor('editor');
+
+        //预览
+        $('.js-preview-btn').click(function() {
+        	$(this).addClass('dn');
+        	$('.js-edit-btn').removeClass('dn');
+        	let val = $('#blogContent').val();
+        	let parser = new HyperDown;
+        	let html = parser.makeHtml(val);
+        	$('#blogContent').addClass('dn');
+        	$('.preview').html(html).removeClass('dn');
+
+        	//代码高亮
+			$('.preview pre').addClass('prettyprint');
+			prettyPrint();
+        });
+
+        $('.js-edit-btn').click(function() {
+        	$(this).addClass('dn');
+        	$('.preview').addClass('dn');
+        	$('#blogContent').removeClass('dn');
+        	$('.js-preview-btn').removeClass('dn');
+        })
+
         $('.submit_btn').click(function (e) {
         	e.preventDefault();
 			var onOff = true;

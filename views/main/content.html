@@ -10,17 +10,18 @@
 
 	{% block middle %}	
 			<div class="content mauto mb20">
-				
-				<div class="atext pt10 ">
-					<h2>{{content.title}}</h2>
-					<p class="_tip clearfix">
-						<span class="_class">分类：{{content.category.name}}</span>
-						<span class="_read">阅读({{content.view}})</span>
-						<span class="_view">回复({{content.comment.length}})</span>
-						<span class="">{{content.time|date('Y-m-d', -8*60)}}</span>
-						<button class="btn fr btn-3" onclick="window.history.go(-1);">返回</button>
-					</p>
-					<div class="_content lh2" escape="false">{% autoescape %}{{content.content}}{% endautoescape %}</div>
+				<div class="atext pt10">
+					<div class='c-title'>
+						<h2 class=''>{{content.title}}</h2>
+						<p class="_tip clearfix">
+							<span class="_class">分类：{{content.category.name}}</span>
+							<span class="_read">阅读({{content.view}})</span>
+							<span class="_view">回复({{content.comment.length}})</span>
+							<span class="">{{content.time|date('Y-m-d', -8*60)}}</span>
+							<button class="btn fr btn-3" onclick="window.history.go(-1);">返回</button>
+						</p>
+					</div>
+					<div class="_content lh2" escape="false">{% autoescape %}{{content.text}}{% endautoescape %}</div>
 				</div>
 				<ul class="page_btn tac">
 					<li class="dib">

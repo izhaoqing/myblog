@@ -1,14 +1,25 @@
 @import "index.css";
 /*content*/
+.atext { margin: 0 20px 10px; }
 .content { max-width: 820px; background: #fff; border-radius: 2px; padding-bottom: 1px;
-	._tip { line-height: 32px; }
+	h2 { font-size: 24px; text-align: left; }
+	h1, h2, h3, h4, h5, h6 { color: #585858; }
+	.c-title { border-bottom: 1px solid #aaa; }
+	._tip { line-height: 32px; padding-top: 0; }
 	._back { line-height: 26px; }
 	._view { border-right: 1px dotted #999; }
-	._content { padding: 2%; margin-bottom: 20px; text-indent: 0; 
+	._content { padding: 20px 0; margin-bottom: 20px; text-indent: 0; background: #fff;
 		h3 { font-size: 14px; color: #666; margin: 10px 0; }
-		pre { border: 1px solid #ddd; background: #fff; border-left: 2px solid #ff5e1e; padding: 4px 8px; border-radius: 2px; text-indent: 0; line-height: 1.5em; overflow-x: scroll; }
+		pre { border: 1px solid #ddd; background: #fafafa; border-left: 2px solid #ff5e1e; padding: 4px 8px; border-radius: 3px; text-indent: 0; line-height: 1.5em; overflow-x: scroll; }
 	}
+	p code { color: #ff5e1e; background: #fff3ee; padding: 0 4px; }
 	.atext { a { color: #ff5e1e; } }
+	table { background: #fafafa; border-collapse: collapse; margin-top: 20px;
+		td, th { border: 1px solid #ddd; padding: 5px; }
+		tr:nth-of-type(2n) {
+			background: #fff;
+		}
+	}
 	.page_btn { padding: 0 38px; margin-bottom: 20px; font-size: 12px; color: #ff5e1e;
 		li { margin: 0 6px; }
 	}

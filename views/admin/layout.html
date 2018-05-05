@@ -67,20 +67,7 @@
 </body>
 
 	<script src="/public/bootstrap/js/bootstrap.min.js"></script>
-
-	<script>
-		$('#logoutBtn').click(function () {
-			$.ajax({
-				url : '/admin/logout',
-				type : 'post',
-				success : function (res) {
-					if(res.code == '0') {
-						window.location.reload();
-					}
-				}
-			});
-		});
-	</script>
+	<script src='../../public/js/admin.js'></script>
 
 {% block footer %}
 {% endblock %}

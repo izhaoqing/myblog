@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var Category = require('../models/category');
 var Content = require('../models/content');
+var HyperDown = require('hyperdown');
 
 var userInfo, categories;
 
@@ -145,6 +146,7 @@ router.get('/content', function (req, res) {
 		next.id = content[0]._id;
 		next.category = content[0].category;
 	}).sort({_id:-1}).limit(1);
+
 	//上一页
 	Content.find({_id:{'$gt':id}}, function (err, content) {
 		if (err) {
@@ -172,9 +174,14 @@ router.get('/content', function (req, res) {
 				});
 				return false;
 			}
+
 			Category.findOne({_id:content.category}, function (err, category) {
 				content.view ++;
 				content.save();
+
+				var parse = new HyperDown;
+				content.text = parse.makeHtml(content.content);
+
 				content.category.name = category.name;
 				res.render('main/content.html', {
 					userInfo : req.userInfo,

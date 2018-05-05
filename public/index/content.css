@@ -1,13 +1,32 @@
 @import "index.css";
 /*content*/
+.atext {
+  margin: 0 20px 10px;
+}
 .content {
   max-width: 820px;
   background: #fff;
   border-radius: 2px;
   padding-bottom: 1px;
 }
+.content h2 {
+  font-size: 24px;
+  text-align: left;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  color: #585858;
+}
+.content .c-title {
+  border-bottom: 1px solid #aaa;
+}
 .content ._tip {
   line-height: 32px;
+  padding-top: 0;
 }
 .content ._back {
   line-height: 26px;
@@ -16,9 +35,10 @@
   border-right: 1px dotted #999;
 }
 .content ._content {
-  padding: 2%;
+  padding: 20px 0;
   margin-bottom: 20px;
   text-indent: 0;
+  background: #fff;
 }
 .content ._content h3 {
   font-size: 14px;
@@ -27,16 +47,34 @@
 }
 .content ._content pre {
   border: 1px solid #ddd;
-  background: #fff;
+  background: #fafafa;
   border-left: 2px solid #ff5e1e;
   padding: 4px 8px;
-  border-radius: 2px;
+  border-radius: 3px;
   text-indent: 0;
   line-height: 1.5em;
   overflow-x: scroll;
 }
+.content p code {
+  color: #ff5e1e;
+  background: #fff3ee;
+  padding: 0 4px;
+}
 .content .atext a {
   color: #ff5e1e;
+}
+.content table {
+  background: #fafafa;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.content table td,
+.content table th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+.content table tr:nth-of-type(2n) {
+  background: #fff;
 }
 .content .page_btn {
   padding: 0 38px;
