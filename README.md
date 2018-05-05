@@ -2,6 +2,8 @@
 
 一个发布博客的网站，使用nodejs + mongodb，前端使用 jquery + less。
 
+地址：[www.zqblog.top](47.75.89.71);
+
 ## 启动
 
 1. `git clone`  
