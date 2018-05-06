@@ -2,7 +2,7 @@
 
 一个发布博客的网站，使用nodejs + mongodb，前端使用 jquery + less。
 
-地址：[www.zqblog.top](http://47.75.89.71);
+地址：[www.zqblog.top](http://www.zqblog.top);
 
 ## 启动
 
