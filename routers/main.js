@@ -71,6 +71,7 @@ router.get('/', function (req, res, next) {
 
 		if (data.search) {
 			Content.find({content:new RegExp(data.search)},function (err, contents) {
+				var searchL = 1;
 				if (err) {
 					res.render('main/404', {
 						userInfo : req.userInfo,
@@ -90,7 +91,8 @@ router.get('/', function (req, res, next) {
 					type : data.type,
 					paginations : pagination,
 					recoms : data.recom,
-					searchLength : searchL
+					searchLength : searchL,
+					keyWords: data.search
 				});
 			}).limit(limit).skip(skip).populate('category').sort({time:-1});
 
