@@ -40,8 +40,11 @@
   text-indent: 0;
   background: #fff;
 }
+.content ._content p {
+  margin: 10px 0;
+}
 .content ._content h3 {
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   margin: 10px 0;
 }
@@ -54,6 +57,24 @@
   text-indent: 0;
   line-height: 1.5em;
   overflow-x: scroll;
+}
+.content ._content ul {
+  margin-left: 20px;
+}
+.content ._content li {
+  list-style: disc;
+  padding: 0;
+  border: none;
+}
+.content ._content li:last-child {
+  padding: 0;
+}
+.content ._content blockquote {
+  background: #f5f5f5;
+  padding: 0 10px;
+  border-left: 2px solid #ddd;
+  margin: 10px 0;
+  color: #999;
 }
 .content p code {
   color: #ff5e1e;
